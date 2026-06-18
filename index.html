@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UBuyer · Wildberries（野莓）真人测评 · 中国卖家安全增长</title>
+<meta name="description" content="UBuyer 为中国卖家提供 Wildberries（野莓）自养号真人测评服务。3000+ 俄罗斯实体取货点 · 3 年 0 封号 · 100+ 本地团队。">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="UBuyer · Wildberries（野莓）真人测评">
+<meta property="og:description" content="3000+ 俄罗斯实体取货点 · 3 年 0 封号 · 100+ 本地团队">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://u-buyer.com">
+<meta name="robots" content="index, follow">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --canvas:       #0D1117;
+    --surface-1:    #161B22;
+    --surface-2:    #1C232C;
+    --surface-3:    #252D37;
+    --hairline:     #262E38;
+    --hairline-soft:#1F2630;
+
+    --ink:          #FAFAFA;
+    --ink-muted:    #C7CED6;
+    --ink-subtle:   #9099A3;
+    --ink-faint:    #6A727C;
+
+    --amber:        #E8B96B;
+    --amber-hi:     #F0C685;
+    --amber-deep:   #C99B4F;
+    --amber-soft:   #F5D8A8;
+    --amber-glow:   rgba(232, 185, 107, 0.12);
+    --on-amber:     #0D1117;
+
+    --red:          #f87171;
+    --green:        #34d399;
+
+    --font-display: "Inter", "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, -apple-system, sans-serif;
+    --font-body:    "Inter", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, -apple-system, sans-serif;
+    --font-mono:    "JetBrains Mono", "SF Mono", "Cascadia Mono", ui-monospace, Menlo, monospace;
+  }
+
+  html, body { margin: 0; padding: 0; background: var(--canvas); color: var(--ink-muted); -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); font-size: 15px; line-height: 1.6; font-feature-settings: "kern" 1; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  h1, h2, h3, h4 { margin: 0; color: var(--ink); font-family: var(--font-display); }
+
+  /* ---------- Topbar ---------- */
+  .topbar {
+    background: var(--amber);
+    color: var(--on-amber);
+    padding: 9px 24px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: .01em;
+  }
+  .topbar b { font-weight: 700; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px; border-bottom: 1px solid var(--hairline);
+    background: var(--canvas);
+  }
+  @media (min-width: 900px) { .nav { padding: 22px 48px; } }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .brand-dot {
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--amber);
+  }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: -.01em; }
+  .nav-sub { color: var(--ink-faint); font-family: var(--font-mono); font-size: 11px; margin-left: 4px; display: none; letter-spacing: .12em; text-transform: uppercase; }
+  @media (min-width: 768px) { .nav-sub { display: inline; } }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 64px 24px;
+  }
+  @media (min-width: 900px) { section { padding: 96px 48px; } }
+  section + section { border-top: 1px solid var(--hairline); }
+
+  .container { max-width: 1180px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    color: var(--amber);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .eyebrow .num { color: var(--amber); font-family: var(--font-mono); }
+  .eyebrow .dash { color: var(--ink-faint); }
+
+  /* ---------- Typography ---------- */
+  .h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -.022em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -.018em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: -.012em;
+    color: var(--ink);
+  }
+  .lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 720px;
+  }
+  .amber { color: var(--amber); }
+  .ink-subtle { color: var(--ink-subtle); }
+  .ink-muted { color: var(--ink-muted); }
+  .mono { font-family: var(--font-mono); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 26px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all .15s ease;
+    cursor: pointer; border: 0;
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .btn-amber { background: var(--amber); color: var(--on-amber); }
+  .btn-amber:hover { background: var(--amber-hi); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--hairline); }
+  .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
+  .btn-sm { padding: 10px 18px; font-size: 14px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: 72px;
+    padding-bottom: 96px;
+  }
+  @media (min-width: 900px) { .hero { padding-top: 104px; padding-bottom: 128px; } }
+  .hero-bullets {
+    display: grid; grid-template-columns: 1fr; gap: 12px;
+    margin-top: 36px; max-width: 720px;
+  }
+  @media (min-width: 700px) { .hero-bullets { grid-template-columns: 1fr 1fr; gap: 14px 32px; } }
+  .hero-bullet { display: flex; gap: 12px; align-items: flex-start; }
+  .hero-bullet .check {
+    flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--amber-glow);
+    color: var(--amber);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    margin-top: 1px;
+  }
+  .hero-bullet span { color: var(--ink-muted); font-size: 15px; line-height: 1.55; }
+
+  /* ---------- Stat cards ---------- */
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin-top: 56px;
+  }
+  @media (min-width: 900px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat-card {
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -.04em;
+    color: var(--amber);
+  }
+  .stat-num .plus { font-size: .55em; vertical-align: baseline; }
+  .stat-label {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .15em;
+    color: var(--ink-subtle);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ---------- Cards 3-up ---------- */
+  .cards-3 {
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+    margin-top: 48px;
+  }
+  @media (min-width: 800px) { .cards-3 { grid-template-columns: repeat(3, 1fr); } }
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .card-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .card h3 { margin-bottom: 10px; }
+  .card p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.6; }
+
+  /* ---------- Compare table ---------- */
+  .compare {
+    margin-top: 48px;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .compare-scroll { overflow-x: auto; }
+  table.cmp { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .cmp th, .cmp td { padding: 18px 22px; text-align: left; font-size: 15px; color: var(--ink-muted); }
+  .cmp thead th {
+    background: var(--surface-2);
+    color: var(--ink-subtle);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .cmp thead th.win { color: var(--amber); }
+  .cmp tbody tr { background: var(--surface-1); }
+  .cmp tbody tr + tr td { border-top: 1px solid var(--hairline-soft); }
+  .cmp tbody td:first-child { color: var(--ink); font-weight: 500; }
+  .ok  { color: var(--green); }
+  .bad { color: var(--red); }
+  .mid { color: var(--amber); }
+
+  /* ---------- Steps ---------- */
+  .steps {
+    margin-top: 48px;
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+  }
+  @media (min-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+  .step {
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 28px;
+    display: grid; grid-template-columns: 56px 1fr; gap: 18px;
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: .18em;
+    padding-top: 4px;
+  }
+  .step h3 { margin-bottom: 8px; font-size: 20px; }
+  .step p { margin: 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.6; }
+
+  /* ---------- Video block ---------- */
+  .video-frame {
+    margin-top: 48px;
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+    background: var(--surface-1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play-btn {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: var(--amber);
+    color: var(--on-amber);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .play-tri {
+    margin-left: 5px;
+    width: 0; height: 0;
+    border-left: 16px solid var(--on-amber);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  .video-meta { text-align: center; color: var(--ink-subtle); font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; }
+
+  /* ---------- Pullquote ---------- */
+  .pullquote {
+    margin-top: 48px;
+    background: var(--amber-glow);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 14px 14px 0;
+    padding: 28px 32px;
+    max-width: 880px;
+  }
+  .pullquote .pq-eyebrow {
+    font-family: var(--font-mono);
+    color: var(--amber);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pullquote p {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ink);
+    letter-spacing: -.01em;
+  }
+  .pullquote p .amber { color: var(--amber); }
+
+  /* ---------- Prices ---------- */
+  .price-grid {
+    margin-top: 48px;
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+  }
+  @media (min-width: 900px) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
+  .price-card {
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--amber);
+    background: linear-gradient(180deg, var(--surface-1) 0%, var(--surface-1) 100%);
+  }
+  .price-tag {
+    position: absolute; top: -10px; left: 28px;
+    padding: 4px 10px;
+    background: var(--amber); color: var(--on-amber);
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: .18em; text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .price-tier {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-subtle);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .price-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -.03em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .price-card.featured .price-num { color: var(--amber); }
+  .price-cur { font-size: 17px; color: var(--ink-subtle); font-weight: 400; margin-left: 4px; }
+  .price-cap { color: var(--ink-subtle); font-size: 14px; margin-bottom: 22px; }
+  .price-list { list-style: none; margin: 0 0 22px; padding: 0; }
+  .price-list li { padding: 7px 0; color: var(--ink-muted); font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start; }
+  .price-list li::before {
+    content: ""; flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber);
+    margin-top: 8px;
+  }
+  .price-cta { width: 100%; }
+
+  .extras {
+    margin-top: 14px;
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    background: var(--surface-1);
+    padding: 20px 24px;
+    display: grid; grid-template-columns: 1fr; gap: 10px;
+    color: var(--ink-muted);
+    font-size: 14px;
+  }
+  @media (min-width: 800px) { .extras { grid-template-columns: repeat(3, 1fr); } }
+  .extras-key { color: var(--ink-subtle); font-family: var(--font-mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; margin-right: 8px; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 10px; max-width: 920px; }
+  details.faq {
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    background: var(--surface-1);
+    padding: 22px 26px;
+    cursor: pointer;
+  }
+  details.faq summary {
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -.005em;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  .chev {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--amber-glow);
+    color: var(--amber);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 16px;
+    transition: transform .2s ease;
+    flex-shrink: 0;
+  }
+  details.faq[open] .chev { transform: rotate(45deg); }
+  details.faq p {
+    margin: 16px 0 0;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    font-size: 14.5px;
+  }
+  details.faq p .amber { color: var(--amber); font-weight: 500; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    margin-top: 48px;
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+  }
+  @media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+  .contact-card {
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 36px;
+    display: flex; flex-direction: column;
+  }
+  .contact-card.wechat { align-items: center; text-align: center; }
+  .qr-box {
+    width: 200px; height: 200px;
+    background: var(--surface-2);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 16px 0 22px;
+    color: var(--ink-faint);
+    font-family: var(--font-mono); font-size: 12px;
+  }
+  .contact-title { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--ink); margin-bottom: 6px; }
+  .contact-sub { color: var(--ink-subtle); font-size: 14px; }
+  .contact-eyebrow {
+    font-family: var(--font-mono); color: var(--amber);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  form.contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
+  form.contact-form .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  form.contact-form input,
+  form.contact-form select {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--hairline);
+    padding: 14px 16px;
+    color: var(--ink);
+    outline: none;
+    border-radius: 10px;
+    transition: border-color .15s ease;
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+  form.contact-form input::placeholder { color: var(--ink-faint); }
+  form.contact-form input:focus, form.contact-form select:focus { border-color: var(--amber); }
+  form.contact-form button { margin-top: 6px; width: 100%; padding: 16px 24px; font-weight: 700; }
+  .form-hint { font-size: 12px; color: var(--ink-faint); text-align: center; margin-top: 4px; }
+
+  /* ---------- Final CTA ---------- */
+  .cta-final {
+    text-align: center;
+    padding: 96px 24px;
+    border-top: 1px solid var(--hairline);
+    background: var(--canvas);
+  }
+  .cta-final .h1 { max-width: 880px; margin: 0 auto 24px; }
+  .cta-final .lead { margin: 0 auto 40px; }
+  .cta-final .btn-row { justify-content: center; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--hairline);
+    padding: 36px 24px;
+    color: var(--ink-faint);
+    font-size: 13px;
+    display: flex; flex-direction: column; gap: 18px; justify-content: space-between; align-items: flex-start;
+  }
+  @media (min-width: 800px) { footer { padding: 36px 48px; flex-direction: row; align-items: center; } }
+  .foot-brand { display: flex; align-items: center; gap: 10px; }
+  .foot-brand .brand-dot { width: 8px; height: 8px; }
+  .foot-brand .brand-name { font-size: 15px; }
+  .foot-links { display: flex; gap: 28px; flex-wrap: wrap; }
+  .foot-links a:hover { color: var(--ink-muted); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">中国卖家专属 · <b>限时</b> · 首次合作赠送 50 条真实评价 →</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">UBuyer</span>
+    <span class="nav-sub">· 俄罗斯电商安全增长</span>
+  </div>
+  <a href="#contact" class="btn btn-sm btn-outline">微信咨询 →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow"><span class="num">01</span><span class="dash">—</span><span>专为中国卖家</span></div>
+
+    <h1 class="h1">
+      在 Wildberries（野莓）安全提升排名 ——<br>
+      通过 <span class="amber">真人测评</span> 而非软件刷单
+    </h1>
+
+    <p class="lead">
+      俄罗斯本地真人买家 · 实体取货点 · 真实评价 · 商品自动回库。<br>
+      3 年 0 封号 — 中国卖家在 WB 的稳定增长基础设施。
+    </p>
+
+    <div class="hero-bullets">
+      <div class="hero-bullet">
+        <span class="check">✓</span>
+        <span>真实账户 + 3+ 年购买历史，反作弊系统无法识别</span>
+      </div>
+      <div class="hero-bullet">
+        <span class="check">✓</span>
+        <span>每笔订单从不同取货点取货 — 无行为关联模式</span>
+      </div>
+      <div class="hero-bullet">
+        <span class="check">✓</span>
+        <span>商品退回 WB 仓库，您的库存不损失</span>
+      </div>
+      <div class="hero-bullet">
+        <span class="check">✓</span>
+        <span>正式合同 · 财务凭证 · 支持中俄跨境结算</span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-amber">免费微信咨询 →</a>
+      <a href="#how" class="btn btn-outline">了解工作流程</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">3000<span class="plus">+</span></div>
+        <div class="stat-label">俄罗斯真人买家档案</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3000<span class="plus">+</span></div>
+        <div class="stat-label">实体取货点</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100<span class="plus">+</span></div>
+        <div class="stat-label">本地俄罗斯团队</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">3 年 0 封号</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="container">
+    <div class="eyebrow"><span class="num">02</span><span class="dash">—</span><span>挑战</span></div>
+    <h2 class="h2">90% 中国新店铺在前 <span class="amber">14 天</span> 内失败</h2>
+    <p class="lead">出海 WB 失败的真实原因，往往不在于产品本身，而在于这三种致命陷阱。</p>
+
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-eyebrow">01 · 没评价</div>
+        <h3>新商品卡进不了搜索</h3>
+        <p>没有评价 → WB 算法不推荐 → 没有曝光 → 没有订单 → 投资回不来。前 14 天是生死线。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">02 · 软件被识别</div>
+        <h3>软件补单被反作弊抓住</h3>
+        <p>WB 反作弊系统识别虚拟 SIM、模拟器、IP 关联。首次罚款 10 万卢布起，再次直接封号，整个店铺归零。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">03 · 个体测评员</div>
+        <h3>个体测评员不可靠</h3>
+        <p>账号互相关联、临时消失、还可能遇到骗子。中文卖家社群里几乎每月都有人踩坑 — 这是行业普遍痛点。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="container">
+    <div class="eyebrow"><span class="num">03</span><span class="dash">—</span><span>对比</span></div>
+    <h2 class="h2">三种方式 · 只有一种 <span class="amber">真正安全</span></h2>
+    <p class="lead">把市面上的方案放在一起对比，结果一目了然。</p>
+
+    <div class="compare">
+      <div class="compare-scroll">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th style="width: 30%;"></th>
+              <th>个体测评员</th>
+              <th>软件补单</th>
+              <th class="win">UBuyer 基础设施</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>真实买家账号</td>
+              <td><span class="mid">⚠ 不稳定</span></td>
+              <td><span class="bad">✗ 虚拟</span></td>
+              <td><span class="ok">✓ 3000+ 真人</span></td>
+            </tr>
+            <tr>
+              <td>实体取货点</td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="ok">✓ 3000+ 全境</span></td>
+            </tr>
+            <tr>
+              <td>WB 反作弊风险</td>
+              <td><span class="mid">⚠ 中等</span></td>
+              <td><span class="bad">✗ 高</span></td>
+              <td><span class="ok">✓ 0 封号 3 年</span></td>
+            </tr>
+            <tr>
+              <td>真实设备 · 物理 SIM · 家庭 IP</td>
+              <td><span class="mid">⚠ 部分</span></td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="ok">✓ 全部</span></td>
+            </tr>
+            <tr>
+              <td>正式合同 · 财务凭证</td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="ok">✓</span></td>
+            </tr>
+            <tr>
+              <td>商品自动回库</td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="ok">✓</span></td>
+            </tr>
+            <tr>
+              <td>中文经理 7×24 支持</td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="bad">✗</span></td>
+              <td><span class="ok">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE / VIDEO -->
+<section>
+  <div class="container">
+    <div class="eyebrow"><span class="num">04</span><span class="dash">—</span><span>基础设施</span></div>
+    <h2 class="h2">亲眼看到俄罗斯<br><span class="amber">真实取货点</span></h2>
+    <p class="lead">我们不是机器人，不是软件。这是莫斯科和圣彼得堡真实的 Wildberries 取货点，由真实买家为您的商品下单并取货。</p>
+
+    <div class="video-frame">
+      <div>
+        <div class="play-btn"><div class="play-tri"></div></div>
+        <div class="video-meta">视频 · 60 秒 · 中文字幕<br><span style="opacity:.5;">[ 在此插入取货点实拍视频 ]</span></div>
+      </div>
+    </div>
+
+    <div class="cards-3">
+      <div class="card">
+        <div class="card-eyebrow">真实设备</div>
+        <h3>真实 Android / iOS</h3>
+        <p>每个买家使用真实手机 — 不是模拟器，不是云手机。设备指纹完全自然。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">物理 SIM 卡</div>
+        <h3>俄罗斯本地运营商</h3>
+        <p>俄罗斯三大主流运营商的物理 SIM 卡，非虚拟号 — 短信验证、号码归属都是真实的。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">家庭 IP</div>
+        <h3>俄罗斯家庭宽带</h3>
+        <p>买家家庭宽带 IP，纯净度极高。行为完全模拟本地消费者购物习惯。</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      <div class="pq-eyebrow">核心 · 安全逻辑</div>
+      <p>WB 反作弊系统识别的，是<span class="amber">异常模式</span>。我们的优势在于：所有行为本就是真实买家在购物 — 在系统眼里，这不是异常，而是<span class="amber">正常购买</span>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="eyebrow"><span class="num">05</span><span class="dash">—</span><span>流程</span></div>
+    <h2 class="h2">4 步 · 安全启动<br>您的 WB 店铺</h2>
+    <p class="lead">从微信沟通到首批评价发布 — 7-14 天即可看到明显变化。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3 class="h3">微信简报</h3>
+          <p>中文经理通过微信沟通：类目、商品卡链接、目标关键词、预算。1 小时内回复定制方案和报价。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3 class="h3">匹配真人买家</h3>
+          <p>从 3000+ 档案中按性别、年龄、地区、消费习惯匹配适合您商品的买家。每个档案有 3+ 年真实购买历史。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3 class="h3">实体取货点取货</h3>
+          <p>每笔订单从不同的取货点取货（≥80 天轮换间隔）。无购买路径关联，完全模拟自然购买。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h3 class="h3">真实评价 + 回库</h3>
+          <p>高质量评价（含图文），符合 WB 算法的发布节奏。商品自动退回 WB 仓库继续销售 — 您的库存不损失。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section>
+  <div class="container">
+    <div class="eyebrow"><span class="num">06</span><span class="dash">—</span><span>价格</span></div>
+    <h2 class="h2">透明价格 · <span class="amber">无隐藏费用</span></h2>
+    <p class="lead">单价随订单量递减。所有费用明确写入合同 — 不会有突然多出来的开销。价格以俄罗斯卢布（₽）计算，支持人民币结算。</p>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-tier">入门</div>
+        <div class="price-num">500<span class="price-cur">₽ / 单</span></div>
+        <div class="price-cap">100 单起 · 适合单一商品卡测试</div>
+        <ul class="price-list">
+          <li>真人买家 + 实体取货</li>
+          <li>真实评价（不含图）</li>
+          <li>正式合同 + 财务凭证</li>
+          <li>中文经理对接</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline price-cta">咨询</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">推荐</div>
+        <div class="price-tier">标准</div>
+        <div class="price-num">470<span class="price-cur">₽ / 单</span></div>
+        <div class="price-cap">500 单起 · 完整启动方案</div>
+        <ul class="price-list">
+          <li>包含「入门」全部内容</li>
+          <li>关键词分配定制</li>
+          <li>优先排期</li>
+          <li>50% 评价含图</li>
+        </ul>
+        <a href="#contact" class="btn btn-amber price-cta">立即咨询 →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">专业</div>
+        <div class="price-num">450<span class="price-cur">₽ / 单</span></div>
+        <div class="price-cap">1000 单起 · 多店铺 / 大类目</div>
+        <ul class="price-list">
+          <li>包含「标准」全部内容</li>
+          <li>专属运营团队</li>
+          <li>24/7 微信支持</li>
+          <li>季度策略复盘</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline price-cta">咨询</a>
+      </div>
+    </div>
+
+    <div class="extras">
+      <div><span class="extras-key">附加</span>带图评价：100 ₽ / 条</div>
+      <div><span class="extras-key">附加</span>运营资金管理：1% 手续费</div>
+      <div><span class="extras-key">附加</span>商品包装：按类目报价</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="eyebrow"><span class="num">07</span><span class="dash">—</span><span>常见问题</span></div>
+    <h2 class="h2">中国卖家最关心的<br><span class="amber">6 个问题</span></h2>
+
+    <div class="faq-list">
+      <details class="faq" open>
+        <summary><span>会被 WB 发现吗？店铺会被封号吗？</span><span class="chev">+</span></summary>
+        <p>不会。所有买家为真人（3+ 年购买历史），使用真实设备、物理 SIM、俄罗斯家庭 IP，通过实体取货点完成订单。WB 反作弊系统无法识别真实用户行为。<span class="amber">3 年 0 封号</span> 是我们的实际记录 — 写在合同里的承诺。</p>
+      </details>
+      <details class="faq">
+        <summary><span>资金如何管理？会不会被骗？</span><span class="chev">+</span></summary>
+        <p>运营资金充值到您的 WB 卖家账户，由您本人 100% 控制。我们仅收取 1% 手续费。每笔订单完成后，资金自动返回您的账户 — 全程不接触您的资金。</p>
+      </details>
+      <details class="faq">
+        <summary><span>多长时间能看到效果？</span><span class="chev">+</span></summary>
+        <p>第 1-2 周：商品卡评分从 0 升至 4.5-5.0。第 3-4 周：进入搜索结果，开始出现自然订单。完整周期 7-14 天即可看到明显变化。</p>
+      </details>
+      <details class="faq">
+        <summary><span>支持哪些商品类目？</span><span class="chev">+</span></summary>
+        <p>电子产品、服装、家居、美容、儿童用品、运动 — 中国卖家在 WB 的所有主流类目。Ozon 也支持，方案单独定制。</p>
+      </details>
+      <details class="faq">
+        <summary><span>付款方式？支持人民币吗？</span><span class="chev">+</span></summary>
+        <p>支持人民币结算，通过中俄跨境合作伙伴完成。也可使用卢布账户、USDT 等方式。中文经理会协助您选择最便捷的方案。</p>
+      </details>
+      <details class="faq">
+        <summary><span>怎么开始？</span><span class="chev">+</span></summary>
+        <p>扫描页面下方微信二维码，或在表单中留下联系方式。中文经理 24 小时内回复，并提供定制方案。免费咨询，不收任何费用。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="eyebrow"><span class="num">08</span><span class="dash">—</span><span>开始</span></div>
+    <h2 class="h2">准备好 <span class="amber">安全启动</span><br>您的 WB 店铺？</h2>
+    <p class="lead">选择您方便的联系方式。中文经理 24 小时内回复，提供定制方案，免费咨询。</p>
+
+    <div class="contact-grid">
+      <div class="contact-card wechat">
+        <div class="contact-eyebrow">方式 A · 推荐</div>
+        <div class="contact-title">微信扫码立即咨询</div>
+        <div class="qr-box">[ 微信二维码占位 ]</div>
+        <div class="contact-sub">中文经理 · 24 小时内回复</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-eyebrow">方式 B · 留下联系方式</div>
+        <form class="contact-form">
+          <input type="text" placeholder="您的姓名">
+          <input type="text" placeholder="商品类目（例：电子产品）">
+          <div class="row-2">
+            <select>
+              <option>微信 ID</option>
+              <option>电话号码</option>
+              <option>邮箱</option>
+              <option>Telegram</option>
+            </select>
+            <input type="text" placeholder="联系方式">
+          </div>
+          <button type="submit" class="btn btn-amber">提交咨询 →</button>
+          <div class="form-hint">提交即表示同意保密处理您的信息</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-final">
+  <div class="container">
+    <h1 class="h1">3 年 <span class="amber">0 封号</span> · 100+ 中国卖家正在使用</h1>
+    <p class="lead">不要让前 14 天毁掉您的整个出海计划。</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-amber">免费微信咨询 →</a>
+      <a href="#how" class="btn btn-outline">查看流程</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">
+    <span class="brand-dot"></span>
+    <span class="brand-name">UBuyer</span>
+    <span style="margin-left: 12px; color: var(--ink-faint);">© 2026 · 俄罗斯专业 Wildberries 安全增长服务</span>
+  </div>
+  <div class="foot-links">
+    <a href="#">关于我们</a>
+    <a href="#">隐私政策</a>
+    <a href="mailto:hello@u-buyer.com">hello@u-buyer.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
